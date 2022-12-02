@@ -9,7 +9,7 @@ TRUNCATE TABLE factura;
 -- 3. poblar las tablas mediante el uso de los procedimientos
 ---- Caso 1 Exp 3
 EXECUTE inserta_facturas(500000);
-EXECUTE inserta_detalles(1, 500000);
+EXECUTE inserta_detalles(2, 1000000);
 
 -- 4. Limpiar caché en SQL Plus con los siguientes comandos
 ALTER SYSTEM flush buffer_cache;
@@ -22,7 +22,6 @@ WHERE addr = (
     SELECT paddr FROM sys.v_$session
     WHERE audsid = USERENV('sessionid')
 );
-             
 
 -- 6. Ejecutar:
 set autotrace traceonly;
@@ -37,9 +36,9 @@ SELECT value AS ruta_d
 FROM v$parameter
 WHERE name = 'user_dump_dest';
 
--- 6. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
+-- 9. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
 -- Ejecutarlo en un CMD
-tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso1exp3.txt
+tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outexp2p1.txt
 
 -- Para apagar el autotrace
 set autotrace off;
