@@ -18,7 +18,7 @@ WHERE addr = (SELECT paddr FROM sys.v_$session
              
 -- 7. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
 -- Ejecutarlo en un CMD
-tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\out1.txt
+tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_9244.trc C:\temp\out1.txt
 
 -- 8. ruta del trace
 SELECT value AS ruta_d
@@ -32,3 +32,4 @@ set autotrace traceonly;
 
 -- Para apagar el autotrace
 set autotrace off;
+

@@ -23,6 +23,11 @@ WHERE addr = (
     WHERE audsid = USERENV('sessionid')
 );
              
+-- Encontrar la ruta del trace en el pc
+SELECT value AS ruta_d
+FROM v$parameter
+WHERE name = 'user_dump_dest';
+
 -- 6. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
 -- Ejecutarlo en un CMD
 tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso1exp1.txt
