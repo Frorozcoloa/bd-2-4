@@ -25,7 +25,7 @@ SELECT value AS ruta_d
 FROM v$parameter
 WHERE name = 'user_dump_dest';
 
--- Ejecutar:
+-- 8. Ejecutar:
 set autotrace traceonly;
 
 -- 9. Ejecutar query (VER ARCHIVO queries.sql)
