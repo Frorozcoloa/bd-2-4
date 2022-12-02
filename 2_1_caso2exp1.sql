@@ -7,7 +7,7 @@ TRUNCATE TABLE detalle;
 TRUNCATE TABLE factura;
 
 -- 3. poblar las tablas mediante el uso de los procedimientos
----- Caso 2 Exp 1
+---- Caso 1 Exp 3
 EXECUTE inserta_facturas(500000);
 EXECUTE inserta_detalles(1, 2000000);
 
@@ -23,24 +23,25 @@ WHERE addr = (
     WHERE audsid = USERENV('sessionid')
 );
              
--- 6. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
--- Ejecutarlo en un CMD
-tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso2exp1.txt
 
--- 7. ruta del trace
-SELECT value AS ruta_d
-FROM v$parameter
-WHERE name = 'user_dump_dest';
-
--- Ejecutar:
+-- 6. Ejecutar:
 set autotrace traceonly;
 
--- Consulta
+-- 7. Consulta
 CREATE INDEX i_codfact ON detalle(codfact);
 
 SELECT INDEX(i_codfact)
 FROM factura f, detalle d
 WHERE f.codigof = d.codfact;
+
+-- 8. ruta del trace
+SELECT value AS ruta_d
+FROM v$parameter
+WHERE name = 'user_dump_dest';
+
+-- 6. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
+-- Ejecutarlo en un CMD
+tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso2exp1.txt
 
 -- Para apagar el autotrace
 set autotrace off;
