@@ -49,15 +49,35 @@ CREATE FUNCTION concatenarkendall(codprod IN PRODXTIPO.CODPROD%TYPE) RETURN VARC
     END;
 /
 
-CREATE OR REPLACE PROCEDURE insertar_codprod(TOTAL NUMBER)  IS
+
+create or replace function RandomString(p_Characters varchar2, p_length number)
+  return varchar2
+  is
+    l_res varchar2(256);
+  begin
+    select substr(listagg(substr(p_Characters, level, 1)) within group(order by dbms_random.value), 1, p_length)
+      into l_res
+      from dual
+    connect by level <= length(p_Characters);
+     return l_res;
+   end;
+   /
+
+
+
+
+CREATE OR REPLACE PROCEDURE insertar_prodxtipo(TOTAL NUMBER)  IS
     last_values codprod.id%TYPE;
+    caracter1 VARCHAR2;
     BEGIN
 
-    SELECT max(id)
-    INTO last_values
-    FROM prodxtipo;
+        SELECT max(id)
+        INTO last_values
+        FROM prodxtipo;
 
-    FOR k IN 1..TOTAL LOOP
-        INSERT INTO prodxtipo (id, codprod, tipo) VALUES (values)
-      END LOOP
+        FOR k IN 1..TOTAL LOOP
+            caracter1 := RandomString('1234567abcdefg', 2);
+            INSERT INTO prodxtipo (id, codprod, tipo) VALUES (last_values + k, k, caracter1);
+        END LOOP;
     END;
+    /
