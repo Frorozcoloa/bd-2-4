@@ -17,7 +17,7 @@ codfact NUMBER(20) NOT NULL REFERENCES factura
 
 CREATE OR REPLACE PROCEDURE inserta_facturas (cantidad IN factura.codigof%TYPE)
 IS
- cont NUMBER(4) := 0;
+ cont NUMBER(20) := 0;
 BEGIN
  LOOP
   INSERT INTO factura VALUES(cont, SYSDATE);
@@ -45,7 +45,7 @@ BEGIN
         DBMS_RANDOM.VALUE(1000, 1000000), 
         arr_codigof(cod));
     cont := cont + 1;
-    EXIT WHEN cont = 100;
+    EXIT WHEN cont = cantidad / 4;
    END LOOP;
   
    FOR cod IN arr_codigof.FIRST .. arr_codigof.LAST LOOP   
@@ -74,7 +74,7 @@ BEGIN
         DBMS_RANDOM.VALUE(1000, 1000000), 
         arr_codigof(cod));
     cont := cont + 1;
-    EXIT WHEN cont = 100;
+    EXIT WHEN cont = cantidad / 2;
    END LOOP;
   
    FOR cod IN arr_codigof.FIRST .. arr_codigof.LAST LOOP   
@@ -103,7 +103,7 @@ BEGIN
         DBMS_RANDOM.VALUE(1000, 1000000), 
         arr_codigof(cod));
      cont := cont + 1;
-     EXIT WHEN cont = 100;
+     EXIT WHEN cont = cantidad;
     END LOOP;
    END IF;
  END IF;
