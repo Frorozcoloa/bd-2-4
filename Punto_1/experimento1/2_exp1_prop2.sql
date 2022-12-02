@@ -30,7 +30,7 @@ set autotrace traceonly;
 -- 7. Consulta
 CREATE INDEX i_codfact ON detalle(codfact);
 
-SELECT INDEX(i_codfact)
+SELECT *
 FROM factura f, detalle d
 WHERE f.codigof = d.codfact;
 
@@ -41,7 +41,7 @@ WHERE name = 'user_dump_dest';
 
 -- 9. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
 -- Ejecutarlo en un CMD
-tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_12744.trc C:\temp\out_exp1_prop2.txt
+tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_14320.trc C:\temp\out_exp1_prop2.txt
 
 -- Para apagar el autotrace
 set autotrace off;

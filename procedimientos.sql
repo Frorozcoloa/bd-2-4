@@ -12,7 +12,7 @@ BEGIN
 END;
 
 -- Procedimiento para insertar detalles
-CREATE OR REPLACE PROCEDURE inserta_detalles (caso IN detalle.codigod%TYPE, cantidad IN detalle.codigod%TYPE, agregar IN VARCHAR2)
+CREATE OR REPLACE PROCEDURE inserta_detalles (caso IN detalle.codigod%TYPE, cantidad IN detalle.codigod%TYPE, agregar IN VARCHAR2(5))
 IS
  TYPE cod_fact IS TABLE OF factura.codigof%TYPE;
  arr_codigof cod_fact;
