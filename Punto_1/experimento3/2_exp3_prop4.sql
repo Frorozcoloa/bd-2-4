@@ -8,6 +8,9 @@ TRUNCATE TABLE factura;
 
 -- 3. poblar las tablas mediante el uso de los procedimientos
 ---- Caso 1 Exp 3
+EXECUTE inserta_facturas(100000);
+EXECUTE inserta_detalles(3, 100000);
+
 EXECUTE inserta_facturas(500000);
 EXECUTE inserta_detalles(3, 500000);
 
