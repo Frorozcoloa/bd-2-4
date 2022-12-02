@@ -12,7 +12,7 @@ BEGIN
 END;
 
 -- Procedimiento para insertar detalles
-CREATE OR REPLACE PROCEDURE inserta_detalles (caso IN detalle.codigod%TYPE, cantidad IN detalle.codigod%TYPE)
+CREATE OR REPLACE PROCEDURE inserta_detalles (caso IN detalle.codigod%TYPE, cantidad IN detalle.codigod%TYPE, agregar IN VARCHAR2)
 IS
  TYPE cod_fact IS TABLE OF factura.codigof%TYPE;
  arr_codigof cod_fact;
@@ -21,6 +21,9 @@ IS
 BEGIN
  SELECT codigof BULK COLLECT INTO arr_codigof FROM factura;
  
+ IF agregar = 'f' THEN
+  SELECT MAX(codigod)INTO cont FROM detalle;
+ END IF;
  IF caso = 1 THEN 
   IF arr_codigof.FIRST IS NOT NULL THEN
    FOR cod IN arr_codigof.FIRST .. arr_codigof.LAST LOOP
