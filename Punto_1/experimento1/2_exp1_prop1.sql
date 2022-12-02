@@ -8,8 +8,8 @@ TRUNCATE TABLE factura;
 
 -- 3. poblar las tablas mediante el uso de los procedimientos
 ---- Caso 1 Exp 1
-EXECUTE inserta_facturas(500000);
-EXECUTE inserta_detalles(1, 2000000);
+EXECUTE inserta_facturas(1000000);
+EXECUTE inserta_detalles(1, 4000000);
 
 -- 4. Limpiar caché en SQL Plus con los siguientes comandos
 ALTER SYSTEM flush buffer_cache;
