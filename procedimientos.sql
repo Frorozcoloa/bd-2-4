@@ -21,7 +21,7 @@ IS
 BEGIN
  SELECT codigof BULK COLLECT INTO arr_codigof FROM factura;
  
- IF agregar = 'a' THEN
+ IF agregar = 'f' THEN
   SELECT MAX(codigod)INTO cont FROM detalle;
  END IF;
  IF caso = 1 THEN 
