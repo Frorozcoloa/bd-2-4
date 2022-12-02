@@ -23,27 +23,23 @@ WHERE addr = (
     WHERE audsid = USERENV('sessionid')
 );
              
--- Encontrar la ruta del trace en el pc
-SELECT value AS ruta_d
-FROM v$parameter
-WHERE name = 'user_dump_dest';
 
--- 6. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
--- Ejecutarlo en un CMD
-tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso1exp1.txt
-
--- 7. ruta del trace
-SELECT value AS ruta_d
-FROM v$parameter
-WHERE name = 'user_dump_dest';
-
--- Ejecutar:
+-- 6. Ejecutar:
 set autotrace traceonly;
 
--- Consulta
+-- 7. Consulta
 SELECT *
 FROM factura f, detalle d
 WHERE f.codigof = d.codfact;
+
+-- 8. ruta del trace
+SELECT value AS ruta_d
+FROM v$parameter
+WHERE name = 'user_dump_dest';
+
+-- 9. Cambiar la siguiente ruta modificando el PID y crear una carpeta llamada "temp" en la raíz del disco C
+-- Ejecutarlo en un CMD
+tkprof C:\oraclexe\app\oracle\diag\rdbms\xe\xe\trace\xe_ora_13160.trc C:\temp\outcaso1exp1.txt
 
 -- Para apagar el autotrace
 set autotrace off;
